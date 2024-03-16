@@ -7,13 +7,23 @@ import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: `Next.js Blog Example with ${CMS_NAME}`,
-  description: `A statically generated blog example using Next.js and ${CMS_NAME}.`,
+export const metadata = {
+  metadataBase: new URL('http://localhost:3000'),
+  title: 'Title webtsite',
+  description: 'this is the desciption',
   openGraph: {
-    images: [HOME_OG_IMAGE_URL],
+    title: 'Title webtsite',
+    description: 'this is the desciption',
+    image: 'url/image.png'
   },
-};
+  twitter: {
+    card: 'summary_large_image',
+    site: '@eMartiiin94',
+    title: 'Title webtsite',
+    description: 'this is the desciption',
+    image: 'url/image.png'
+  }
+}
 
 export default function RootLayout({
   children,
