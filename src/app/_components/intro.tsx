@@ -24,13 +24,31 @@ export const products = [
     link: "https://cursor.so",
     thumbnail:images['linkedIn-thumbnail.png'],
   },
-  // {
-  //   title: "Rogue",
-  //   link: "https://userogue.com",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/rogue.png",
-  // },
-
+  {
+    title: "Rogue",
+    link: "https://userogue.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+  },
+  {
+    title: "Aceternity UI",
+    link: "https://ui.aceternity.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+  },
+  {
+    title: "Tailwind Master Kit",
+    link: "https://tailwindmasterkit.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+  },
+  {
+    title: "SmartBridge",
+    link: "https://smartbridgetech.com",
+    thumbnail:
+      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
+  },
+  
   // {
   //   title: "Editorially",
   //   link: "https://editorially.org",
@@ -49,7 +67,6 @@ export const products = [
   //   thumbnail:
   //     "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
   // },
-
   // {
   //   title: "Algochurn",
   //   link: "https://algochurn.com",
@@ -57,30 +74,11 @@ export const products = [
   //     "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
   // },
   // {
-  //   title: "Aceternity UI",
-  //   link: "https://ui.aceternity.com",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
-  // },
-  // {
-  //   title: "Tailwind Master Kit",
-  //   link: "https://tailwindmasterkit.com",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
-  // },
-  // {
-  //   title: "SmartBridge",
-  //   link: "https://smartbridgetech.com",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
-  // },
-  // {
   //   title: "Renderwork Studio",
   //   link: "https://renderwork.studio",
   //   thumbnail:
   //     "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
   // },
-
   // {
   //   title: "Creme Digital",
   //   link: "https://cremedigital.com",

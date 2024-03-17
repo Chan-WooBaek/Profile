@@ -20,9 +20,9 @@ export const HeroParallax = ({
     thumbnail: any;
   }[];
 }) => {
-  const firstRow = products.slice(0, 5);
-  const secondRow = products.slice(5, 10);
-  const thirdRow = products.slice(10, 15);
+  const firstRow = products.slice(0, 3);
+  const secondRow = products.slice(3, 6);
+  const thirdRow = products.slice(6, 9);
   const ref = React.useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -32,11 +32,11 @@ export const HeroParallax = ({
   const springConfig = { stiffness: 300, damping: 30, bounce: 100 };
 
   const translateX = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, 1000]),
+    useTransform(scrollYProgress, [0, 1], [0, 400]),
     springConfig
   );
   const translateXReverse = useSpring(
-    useTransform(scrollYProgress, [0, 1], [0, -1000]),
+    useTransform(scrollYProgress, [0, 1], [0, -400]),
     springConfig
   );
   const rotateX = useSpring(
@@ -74,7 +74,7 @@ export const HeroParallax = ({
           {firstRow.map((product) => (
             <ProductCard
               product={product}
-              translate={translateX}
+              translate={translateXReverse}
               key={product.title}
             />
           ))}
@@ -83,7 +83,7 @@ export const HeroParallax = ({
           {secondRow.map((product) => (
             <ProductCard
               product={product}
-              translate={translateXReverse}
+              translate={translateX}
               key={product.title}
             />
           ))}
@@ -92,7 +92,7 @@ export const HeroParallax = ({
           {thirdRow.map((product) => (
             <ProductCard
               product={product}
-              translate={translateX}
+              translate={translateXReverse}
               key={product.title}
             />
           ))}
@@ -109,8 +109,7 @@ export const Header = () => {
         Hello! <br/><br/> I'm Chan Woo Baek
       </h1>
       <p className="max-w-2xl text-base md:text-xl mt-8 dark:text-neutral-200">
-        I am a recent UNSW graduate full stack software engineer mainly with experience in React and
-        C# .Net.
+        I am a recent UNSW graduate full stack software engineer mainly with experience in React Typescript and C# .Net.
       </p>
     </div>
   );
