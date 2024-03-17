@@ -21,7 +21,7 @@ export const products = [
   },
   {
     title: "LinkedIn",
-    link: "https://cursor.so",
+    link: "www.linkedin.com/in/chan-woo-baek-2b2340202",
     thumbnail:images['linkedIn-thumbnail.png'],
   },
   {

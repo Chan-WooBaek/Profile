@@ -8,7 +8,7 @@ export default function Index() {
     <main>
       <Intro/>
       <Container>
-        <ThreeDCard title={"Test"} description={"This is a test"} imgSrc={""}/>
+        
       </Container>
     </main>
   );
