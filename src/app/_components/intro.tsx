@@ -58,7 +58,7 @@ const words = [
     text: "stack",
   },
   {
-    text: "engineer.",
+    text: "developer.",
   },
   
 ];

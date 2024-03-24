@@ -67,11 +67,11 @@ export default function Index() {
       <section ref={ref} key={key}>
         <motion.div className=" flex flex-col snap-center justify-center items-center h-screen mb-1 py-1 relative">
           {pageContents}
-          <div className="flex bottom-4 absolute">
-            <button onClick={() => refs.next.current.scrollIntoView({ behaviour: 'smooth' })}>
+          {title !== 'Projects' && <div className="flex bottom-4 absolute">
+            <button onClick={() => refs.next.current.scrollIntoView({ behavior: 'smooth' })}>
               <FontAwesomeIcon icon={faArrowDown} size={"3x"}/>
             </button>
-          </div>
+          </div>}
         </motion.div>
       </section>
     )
