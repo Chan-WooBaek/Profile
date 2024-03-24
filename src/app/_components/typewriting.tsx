@@ -1,10 +1,10 @@
 "use client";
 
-import { cn } from "../../utils/cn";
+import { cn } from "../utils/cn";
 import { motion, stagger, useAnimate, useInView } from "framer-motion";
 import { useEffect } from "react";
 
-export const TypewriterEffect = ({
+export const Typewriting = ({
   words,
   className,
   cursorClassName,
@@ -46,8 +46,14 @@ export const TypewriterEffect = ({
 
   const renderWords = () => {
     return (
-      <motion.div ref={scope} className="flex">
+      <motion.div ref={scope} className="flex"
+        variants={{
+          visible: {
+            opacity: 1,
+          }
+        }}>
         {wordsArray.map((word, idx) => {
+          console.log(word)
           return (
             <div key={`word-${idx}`} className="flex ">
               {word.text.map((char, index) => (
@@ -72,7 +78,7 @@ export const TypewriterEffect = ({
   return (
     <div
       className={cn(
-        "flex text-base sm:text-xl md:text-3xl lg:text-5xl font-bold text-center justify-center",
+        "flex text-base sm:text-xl md:text-3xl lg:text-5xl font-bold text-center",
         className
       )}
     >

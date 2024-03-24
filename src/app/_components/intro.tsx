@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "./ui/typewriter-effect";
 
-export const Intro = ({ controls }: { controls: any}) => {
+export const Intro = ({ controls }: { controls?: any}) => {
   return(
     <motion.div
       variants={{
@@ -42,4 +42,23 @@ const words = [
     text: "Baek.",
     className: "text-blue-500 dark:text-blue-500",
   },
+  {
+    text: "I",
+  },
+  {
+    text: "am",
+  },
+  {
+    text: "a",
+  },
+  {
+    text: "full",
+  },
+  {
+    text: "stack",
+  },
+  {
+    text: "engineer.",
+  },
+  
 ];

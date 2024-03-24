@@ -7,15 +7,36 @@ import { InitialNavbar } from "./_components/initial-navbar";
 import { Intro } from "./_components/intro";
 import { AboutMe } from "./_components/about-me";
 import { TechStack } from "./_components/teck-stack";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
 
 export default function Index() {
   const pageRef = useRef(null);
+  const introductionRef = useRef(null);
+  const aboutMeRef = useRef(null);
+  const techStackRef = useRef(null);
+  const projectsRef = useRef(null);
   const screens = ['Introduction', 'About me', 'Tech Stack', 'Projects'];
   const { scrollYProgress } = useScroll({
     container: pageRef
   });
+  function getRef(title: string): any {
+    switch(title) {
+      case 'Introduction':
+        return { current: introductionRef, next: aboutMeRef }
+      case 'About me':
+        return { current: aboutMeRef, next: techStackRef }
+      case 'Tech Stack':
+        return { current: techStackRef, next: projectsRef }
+      case 'Projects':
+        return { current: projectsRef, next: projectsRef }
+      default:
+        return { current: introductionRef, next: aboutMeRef }
+    }
+  }
   function Section({ title, key }: { title: string, key: number }) {
-    const ref = useRef(null);
+    const refs = getRef(title);
+    const ref: any = refs.current;
     const isInView = useInView(ref, { once: true });
     const controls = useAnimation();
 
@@ -44,8 +65,13 @@ export default function Index() {
     }
     return (
       <section ref={ref} key={key}>
-        <motion.div className=" flex snap-center justify-center items-center h-screen mb-1 py-1">
+        <motion.div className=" flex flex-col snap-center justify-center items-center h-screen mb-1 py-1 relative">
           {pageContents}
+          <div className="flex bottom-4 absolute">
+            <button onClick={() => refs.next.current.scrollIntoView({ behaviour: 'smooth' })}>
+              <FontAwesomeIcon icon={faArrowDown} size={"3x"}/>
+            </button>
+          </div>
         </motion.div>
       </section>
     )

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const AboutMe = ({ controls }: { controls: any}) => {
+export const AboutMe = ({ controls }: { controls?: any}) => {
   return(
     <motion.div
       variants={{

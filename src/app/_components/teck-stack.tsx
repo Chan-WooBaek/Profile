@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export const TechStack = ({ controls }: { controls: any}) => {
+export const TechStack = ({ controls }: { controls?: any}) => {
   return(
     <motion.div
       variants={{
