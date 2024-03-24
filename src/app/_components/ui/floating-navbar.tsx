@@ -12,6 +12,7 @@ import Link from "next/link";
 export const FloatingNav = ({
   navItems,
   className,
+  sectionRef,
 }: {
   navItems: {
     name: string;
@@ -19,6 +20,7 @@ export const FloatingNav = ({
     icon?: JSX.Element;
   }[];
   className?: string;
+  sectionRef?:React.MutableRefObject<any>
 }) => {
   const { scrollYProgress } = useScroll();
 

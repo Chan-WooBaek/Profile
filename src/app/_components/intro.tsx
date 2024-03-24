@@ -1,106 +1,45 @@
-"use client";
-import React from "react";
-import { HeroParallax } from "./ui/hero-parallax";
+import { motion } from "framer-motion";
+import { TypewriterEffect } from "./ui/typewriter-effect";
 
-function importAll(r: any) {
-  let images: any = {};
-  r.keys().map((item: any) => { images[item.replace('./', '')] = r(item); });
-  return images;
-}
+export const Intro = ({ controls }: { controls: any}) => {
+  return(
+    <motion.div
+      variants={{
+        hidden: { opacity: 0, y: 75 },
+        visible: { opacity: 1, y: 0 }
+      }}
+      initial='hidden'
+      animate={controls}
+      transition={{ duration: 0.5, delay: 0.25 }}
+    >
+      <TypewriterEffect words={words} />
+    </motion.div>
+  )
+};
 
-const images = importAll(require.context('../../public/assets/intro', false, /\.(png|jpe?g|svg)$/));
-
-export function Intro() {
-  return <HeroParallax products={products} />;
-}
-export const products = [
+const words = [
   {
-    title: "GitHub",
-    link: "https://github.com/chan-woobaek?tab=repositories",
-    thumbnail: images['github-thumbnail.png'],
+    text: "Hi!",
   },
   {
-    title: "LinkedIn",
-    link: "https://linkedin.com/in/chan-woo-baek-2b2340202",
-    thumbnail:images['linkedIn-thumbnail.png'],
+    text: "My",
   },
   {
-    title: "Rogue",
-    link: "https://userogue.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+    text: "name",
   },
   {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+    text: "is",
   },
   {
-    title: "Tailwind Master Kit",
-    link: "https://tailwindmasterkit.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
+    text: "Chan",
+    className: "text-blue-500 dark:text-blue-500",
   },
   {
-    title: "SmartBridge",
-    link: "https://smartbridgetech.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
+    text: "Woo",
+    className: "text-blue-500 dark:text-blue-500",
   },
-  
-  // {
-  //   title: "Editorially",
-  //   link: "https://editorially.org",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/editorially.png",
-  // },
-  // {
-  //   title: "Editrix AI",
-  //   link: "https://editrix.ai",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/editrix.png",
-  // },
-  // {
-  //   title: "Pixel Perfect",
-  //   link: "https://app.pixelperfect.quest",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
-  // },
-  // {
-  //   title: "Algochurn",
-  //   link: "https://algochurn.com",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
-  // },
-  // {
-  //   title: "Renderwork Studio",
-  //   link: "https://renderwork.studio",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
-  // },
-  // {
-  //   title: "Creme Digital",
-  //   link: "https://cremedigital.com",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
-  // },
-  // {
-  //   title: "Golden Bells Academy",
-  //   link: "https://goldenbellsacademy.com",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
-  // },
-  // {
-  //   title: "Invoker Labs",
-  //   link: "https://invoker.lol",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/invoker.png",
-  // },
-  // {
-  //   title: "E Free Invoice",
-  //   link: "https://efreeinvoice.com",
-  //   thumbnail:
-  //     "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
-  // },
+  {
+    text: "Baek.",
+    className: "text-blue-500 dark:text-blue-500",
+  },
 ];
