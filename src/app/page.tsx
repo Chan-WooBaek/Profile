@@ -1,7 +1,7 @@
 "use client"
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FloatingNav } from "./_components/ui/floating-navbar";
-import { motion, useAnimation, useInView, useScroll } from "framer-motion";
+import { motion, useAnimation, useInView, useMotionValueEvent, useScroll } from "framer-motion";
 import { ProgressBar } from "./_components/progress-bar";
 import { InitialNavbar } from "./_components/initial-navbar";
 import { Intro } from "./_components/intro";
@@ -16,10 +16,14 @@ export default function Index() {
   const aboutMeRef = useRef(null);
   const techStackRef = useRef(null);
   const projectsRef = useRef(null);
+  let currentRef = useRef(null);
+  let nextRef: any = useRef(null);
   const screens = ['Introduction', 'About me', 'Tech Stack', 'Projects'];
   const { scrollYProgress } = useScroll({
     container: pageRef
   });
+
+
   function getRef(title: string): any {
     switch(title) {
       case 'Introduction':
@@ -29,20 +33,22 @@ export default function Index() {
       case 'Tech Stack':
         return { current: techStackRef, next: projectsRef }
       case 'Projects':
-        return { current: projectsRef, next: projectsRef }
+        return { current: projectsRef, next: introductionRef }
       default:
         return { current: introductionRef, next: aboutMeRef }
     }
   }
+
   function Section({ title, key }: { title: string, key: number }) {
     const refs = getRef(title);
-    const ref: any = refs.current;
-    const isInView = useInView(ref, { once: true });
+    const isInView = useInView(refs.current, { once: true });
     const controls = useAnimation();
 
     useEffect(() => {
       if(isInView) {
         controls.start('visible');
+        currentRef = refs.current;
+        nextRef = refs.next;
       }
     }, [isInView])
 
@@ -64,25 +70,27 @@ export default function Index() {
       </>)
     }
     return (
-      <section ref={ref} key={key}>
-        <motion.div className=" flex flex-col snap-center justify-center items-center h-screen mb-1 py-1 relative">
-          {pageContents}
-          {title !== 'Projects' && <div className="flex bottom-6 absolute">
-            <button onClick={() => refs.next.current.scrollIntoView({ behavior: 'smooth' })}>
-              <FontAwesomeIcon icon={faArrowDown} size={"3x"} opacity={0.1}/>
-            </button>
-          </div>}
-        </motion.div>
-      </section>
+      <motion.div className="flex relative snap-center justify-center items-center h-screen mb-1 py-1" ref={refs.current} key={key}>
+        {pageContents}
+      </motion.div>
     )
   }
 
+  const [arrowVisible, setArrowVisible] = useState(true);
+  useMotionValueEvent(scrollYProgress, "change", (current) => {
+    if(current > 0.99) setArrowVisible(false);
+  })
+  
   return (
-    <motion.div className="h-screen overflow-y-auto overscroll-y-contain snap-y snap-mandatory" ref={pageRef}>
+    <motion.div className="h-screen overflow-scroll snap-y snap-mandatory justify-center" ref={pageRef}>
       <InitialNavbar scrollYProgress={scrollYProgress} />
       <ProgressBar scrollYProgress={scrollYProgress} />
-      <FloatingNav navItems={[{ name: 'Home', link: '' }]} sectionRef={pageRef} />
       {screens.map((title, key) => Section({ title, key }))}
+      {arrowVisible && <div className="absolute left-1/2 transform translate-x-1/2 translate-y-1/2 bottom-[5%]">
+        <button onClick={() => nextRef.current.scrollIntoView({ behavior: 'smooth' })}>
+          <FontAwesomeIcon icon={faArrowDown} size={"3x"} opacity={0.1}/>
+        </button>
+      </div>}
     </motion.div>
   );
 }

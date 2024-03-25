@@ -1,7 +1,7 @@
 import { MotionValue, motion, useMotionValueEvent, useScroll } from "framer-motion"
 import { useEffect, useState } from "react";
 
-export const InitialNavbar = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
+export const InitialNavbar: any = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
   const [visible, setVisible] = useState(true);
 
   useMotionValueEvent(scrollYProgress, "change", (current) => {
@@ -24,24 +24,32 @@ export const InitialNavbar = ({ scrollYProgress }: { scrollYProgress: MotionValu
   
   return(
     <motion.div
-        className="flex flex-col pt-12 pr-32 absolute top-0 right-0"
-        initial={{
-          opacity: 1,
-          y: -100,
+      className="flex w-screen absolute justify-end pt-10 pr-16 z-10"
+      initial={{
+        opacity: 1,
+        y: -100,
+      }}
+      animate={{
+        y: visible ? 0 : -100,
+        opacity: visible ? 1 : 0,
+      }}
+      transition={{
+        duration: 0.7,
+      }}
+    >
+      <div className="relative">
+      <motion.button
+        whileHover={{
+          scale: 1.2,
+          transition: { duration: 1 },
         }}
-        animate={{
-          y: visible ? 0 : -100,
-          opacity: visible ? 1 : 0,
-        }}
-        transition={{
-          duration: 0.7,
-        }}
+        whileTap={{ scale: 0.9 }}
+        onClick={() => console.log('press')}
       >
-        <div className="flex border border-black self-end rounded-lg py-1 px-4">
-          <a href={''} target="__blank">
-            <p className=" font-sans">Contact</p>
-          </a>
-        </div>
-      </motion.div>
+        Hello
+      </motion.button>
+      </div>
+      
+    </motion.div>
   )
 }
