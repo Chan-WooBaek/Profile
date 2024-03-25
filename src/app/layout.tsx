@@ -1,11 +1,14 @@
 import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lato } from "next/font/google";
 import 'tailwindcss/tailwind.css'
 
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Lato({
+  subsets: ["latin"],
+  weight: "300"
+});
 
 export const metadata = {
   metadataBase: new URL('http://localhost:3000'),
