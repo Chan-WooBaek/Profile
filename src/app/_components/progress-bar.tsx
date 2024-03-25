@@ -1,6 +1,6 @@
 "use client";
 
-import { MotionValue, motion, useScroll, useSpring } from "framer-motion";
+import { MotionValue, motion, useSpring } from "framer-motion";
 
 export const ProgressBar = ({ scrollYProgress }: { scrollYProgress: MotionValue<number> }) => {
   const scaleX = useSpring(scrollYProgress, {
