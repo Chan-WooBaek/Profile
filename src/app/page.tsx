@@ -70,7 +70,7 @@ export default function Index() {
       </>)
     }
     return (
-      <motion.div className="flex relative snap-center justify-center items-center h-screen mb-1 py-1" ref={refs.current} key={key}>
+      <motion.div className={`flex relative snap-center justify-center items-center h-screen ${key !== screens.length - 1 && 'mb-1'} py-1`} ref={refs.current} key={key}>
         {pageContents}
       </motion.div>
     )
