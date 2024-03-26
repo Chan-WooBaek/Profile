@@ -86,7 +86,7 @@ export default function Index() {
       <InitialNavbar scrollYProgress={scrollYProgress} />
       <ProgressBar scrollYProgress={scrollYProgress} />
       {screens.map((title, key) => Section({ title, key }))}
-      {arrowVisible && <div className="absolute left-1/2 transform translate-x-1/2 translate-y-1/2 bottom-[5%]">
+      {arrowVisible && <div className="fixed bottom-5 left-1/2 translate-x-[30%]">
         <button onClick={() => nextRef.current.scrollIntoView({ behavior: 'smooth' })}>
           <FontAwesomeIcon icon={faArrowDown} size={"3x"} opacity={0.1}/>
         </button>

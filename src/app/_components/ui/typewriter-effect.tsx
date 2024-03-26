@@ -47,10 +47,10 @@ export const TypewriterEffect = ({
 
   const renderWords = () => {
     return (
-      <motion.div ref={scope} className="flex">
+      <motion.div ref={scope} className="flex flex-wrap">
         {wordsArray.map((word, idx) => {
           return (
-            <div key={`word-${idx}`} className="flex h-auto">
+            <div key={`word-${idx}`} className="flex w-auto">
               {word.text.map((char, index) => (
                 <motion.span
                   initial={{}}
@@ -70,23 +70,12 @@ export const TypewriterEffect = ({
                     word.className
                   )}
                 >
-                  <div className=" w-[1vw]"></div>
+                  &nbsp;
                 </motion.span>}
             </div>
           );
         })}
-      </motion.div>
-    );
-  };
-  return (
-    <div
-      className={cn(
-        "flex text-base text-[60px] font-bold text-center justify-center",
-        className
-      )}
-    >
-      {renderWords()}
-      <motion.div
+        <motion.div
         initial={{
           opacity: 0,
         }}
@@ -103,6 +92,18 @@ export const TypewriterEffect = ({
           cursorClassName
         )}
       ></motion.div>
+      </motion.div>
+    );
+  };
+  return (
+    <div
+      className={cn(
+        " inline-flex text-base text-[70px] font-bold text-center justify-center w-[70vw]",
+        className
+      )}
+    >
+      {renderWords()}
+      
     </div>
   );
 };
