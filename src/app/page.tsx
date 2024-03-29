@@ -82,7 +82,7 @@ export default function Index() {
   })
   
   return (
-    <motion.div className="h-screen overflow-scroll snap-y snap-mandatory justify-center" ref={pageRef}>
+    <motion.div className="h-screen overflow-scroll snap-y snap-proximity justify-center" ref={pageRef}>
       <InitialNavbar scrollYProgress={scrollYProgress} />
       <ProgressBar scrollYProgress={scrollYProgress} />
       {screens.map((title, key) => Section({ title, key }))}

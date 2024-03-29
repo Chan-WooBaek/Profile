@@ -35,7 +35,6 @@ export const TypewriterEffect = ({
 }
   async function delayFunction(delay: number) {
     await timeout(delay);
-    console.log('h')
     animate(
       "span",
       {

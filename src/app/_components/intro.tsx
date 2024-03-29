@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "./ui/typewriter-effect";
+import { Boxes } from "./ui/background-boxes";
 
 export const Intro = ({ controls }: { controls?: any}) => {
   return(
+    <>
+    <Boxes/>
     <motion.div
       variants={{
         hidden: { opacity: 0, y: 75 },
@@ -11,26 +14,21 @@ export const Intro = ({ controls }: { controls?: any}) => {
       initial='hidden'
       animate={controls}
       transition={{ duration: 0.5, delay: 0.25 }}
-      className="flex flex-col justify-items-center justify-center"
+      className="flex flex-col justify-items-center justify-center z-10"
     >
       <TypewriterEffect words={first_sentence} />
       <TypewriterEffect words={second_sentence} delay={3000} lastLine={true}/>
     </motion.div>
+    </>
   )
 };
 
 const first_sentence = [
   {
-    text: "Hi!",
+    text: "Hello,",
   },
   {
-    text: "My",
-  },
-  {
-    text: "name",
-  },
-  {
-    text: "is",
+    text: "I'm",
   },
   {
     text: "Chan",
@@ -48,19 +46,13 @@ const first_sentence = [
 
 const second_sentence = [
   {
-    text: "I",
-  },
-  {
-    text: "am",
+    text: "I'm",
   },
   {
     text: "a",
   },
   {
-    text: "full",
-  },
-  {
-    text: "stack",
+    text: "full-stack",
   },
   {
     text: "developer.",
