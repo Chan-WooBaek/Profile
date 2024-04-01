@@ -43,18 +43,29 @@ export const Macbook = ({
     target: ref,
     offset: ["start start", "end start"],
   });
+  const [xModifier, setXModifier] = useState(1);
+  const [yModifier, setYModifier] = useState(1);
 
+  useEffect(() => {
+    if (window && window.innerWidth % 1920 > 100) {
+      setXModifier(window.innerWidth/1920);
+    }
+    if (window && window.innerHeight % 930 > 100) {
+      setYModifier(window.innerHeight/930);
+    }
+  }, [window.innerHeight, window.innerWidth]);
+  console.log(xModifier)
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [2.5, 1.2]
+    [2.25 * xModifier, 1.2]
   );
   const scaleY = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [2, 0.6]
+    [2.25 * yModifier, 0.6]
   );
-  const translate = useTransform(scrollYProgress, [0, 0.2], [-950, 0]);
+  const translate = useTransform(scrollYProgress, [0, 0.2], ['-107vh', '0vh']);
   const rotate = useTransform(scrollYProgress, [0.3, 0.12, 0.1], [-28, -28, 0]);
   const textTransform = useTransform(scrollYProgress, [0.3, 0], [100, 0]);
   const textOpacity = useTransform(scrollYProgress, [0.2, 0], [0, 1]);

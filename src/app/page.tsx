@@ -13,9 +13,6 @@ import { Macbook } from "./_components/macbook";
 
 export default function Index() {
   const pageRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    container: pageRef
-  });
 
   return (
     <motion.div className="overflow-scroll" ref={pageRef}>
