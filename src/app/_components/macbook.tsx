@@ -47,10 +47,10 @@ export const Macbook = ({
   const [yModifier, setYModifier] = useState(1);
 
   useEffect(() => {
-    if (window && window?.innerWidth % 1920 > 100) {
+    if (typeof window !== "undefined" && window?.innerWidth % 1920 > 100) {
       setXModifier(window?.innerWidth/1920);
     }
-    if (window && window?.innerHeight % 930 > 100) {
+    if (typeof window !== "undefined" && window?.innerHeight % 930 > 100) {
       setYModifier(window?.innerHeight/930);
     }
   }, [window?.innerHeight, window?.innerWidth]);
