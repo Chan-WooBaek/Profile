@@ -9,7 +9,8 @@ export const TypewriterEffect = ({
   className,
   cursorClassName,
   delay,
-  lastLine
+  lastLine,
+  textSize,
 }: {
   words: {
     text: string;
@@ -19,6 +20,7 @@ export const TypewriterEffect = ({
   cursorClassName?: string;
   delay?: number;
   lastLine?: boolean;
+  textSize?: string;
 }) => {
   // split text inside of words into array of characters
   const wordsArray = words.map((word) => {
@@ -83,7 +85,7 @@ export const TypewriterEffect = ({
                   initial={{}}
                   key={`char-${index}`}
                   className={cn(
-                    `dark:text-white text-black opacity-0 hidden w-0`,
+                    `dark:text-white text-white opacity-0 hidden w-0`,
                     word.className
                   )}
                 >
@@ -93,7 +95,7 @@ export const TypewriterEffect = ({
               {idx != wordLength - 1 && <motion.span
                   initial={{}}
                   className={cn(
-                    `dark:text-white text-black opacity-0 hidden w-0`,
+                    `dark:text-white text-white opacity-0 hidden w-0`,
                     word.className
                   )}
                 >
@@ -115,7 +117,7 @@ export const TypewriterEffect = ({
           repeatType: "reverse",
         }}
         className={cn(
-          "flex rounded-sm w-[0.5vw] bg-blue-500",
+          "flex rounded-sm w-[5px] bg-blue-500",
           cursorClassName
         )}
       ></motion.div>
@@ -125,7 +127,7 @@ export const TypewriterEffect = ({
   return (
     <div
       className={cn(
-        " inline-flex text-base text-[70px] font-bold text-center justify-center w-[70vw]",
+        `inline-flex text-base text-[${textSize}] font-bold text-center justify-left w-[70vw]`,
         className
       )}
     >
