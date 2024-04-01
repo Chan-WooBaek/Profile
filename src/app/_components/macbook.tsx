@@ -53,7 +53,7 @@ export const Macbook = ({
     if (typeof window !== "undefined" && window?.innerHeight % 930 > 100) {
       setYModifier(window?.innerHeight/930);
     }
-  }, [window?.innerHeight, window?.innerWidth]);
+  }, []);
   console.log(xModifier)
   const scaleX = useTransform(
     scrollYProgress,
