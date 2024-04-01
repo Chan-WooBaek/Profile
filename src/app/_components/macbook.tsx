@@ -123,7 +123,7 @@ export const Lid = ({
   scaleX: MotionValue<number>;
   scaleY: MotionValue<number>;
   rotate: MotionValue<number>;
-  translate: MotionValue<number>;
+  translate: MotionValue<any>;
   src?: string;
   textComponent?: any;
 }) => {
