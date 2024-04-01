@@ -44,14 +44,6 @@ export const Macbook = ({
     offset: ["start start", "end start"],
   });
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    if (window && window.innerWidth < 768) {
-      setIsMobile(true);
-    }
-  }, []);
-
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
@@ -151,10 +143,14 @@ export const Lid = ({
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
-        className="absolute h-96 w-[32rem] inset-0 bg-[#010101] rounded-2xl p-2"
+        className="absolute h-96 w-[32rem] inset-0 bg-[#010101] rounded-2xl"
       >
-        {textComponent}
+        
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
+        <div className="absolute flex bg-gray-600 h-[95%] w-full rounded-b-lg top-[5%]">
+          {textComponent}
+        </div>
+        <div className="absolute flex bg-gray-600 h-[6%] w-[20%] rounded-t-lg top-[1%] left-[1%]"/>
       </motion.div>
     </div>
   );
@@ -217,7 +213,7 @@ export const Keypad = () => {
         </KBtn>
         <KBtn>
           <IconPlayerTrackNext className="h-[6px] w-[6px]" />
-          <span className="inline-block mt-1">F8</span>
+          <span className="inline-block mt-1">F9</span>
         </KBtn>
         <KBtn>
           <IconVolume3 className="h-[6px] w-[6px]" />
