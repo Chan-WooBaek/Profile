@@ -47,14 +47,14 @@ export const Macbook = ({
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [2.25, 1.2]
+    [2.5, 1.2]
   );
   const scaleY = useTransform(
     scrollYProgress,
     [0, 0.3],
-    [2.25, 0.6]
+    [2, 0.6]
   );
-  const translate = useTransform(scrollYProgress, [0, 0.2], [-1000, 0]);
+  const translate = useTransform(scrollYProgress, [0, 0.2], [-950, 0]);
   const rotate = useTransform(scrollYProgress, [0.3, 0.12, 0.1], [-28, -28, 0]);
   const textTransform = useTransform(scrollYProgress, [0.3, 0], [100, 0]);
   const textOpacity = useTransform(scrollYProgress, [0.2, 0], [0, 1]);
