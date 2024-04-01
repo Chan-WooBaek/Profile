@@ -47,13 +47,13 @@ export const Macbook = ({
   const [yModifier, setYModifier] = useState(1);
 
   useEffect(() => {
-    if (window && window.innerWidth % 1920 > 100) {
-      setXModifier(window.innerWidth/1920);
+    if (window && window?.innerWidth % 1920 > 100) {
+      setXModifier(window?.innerWidth/1920);
     }
-    if (window && window.innerHeight % 930 > 100) {
-      setYModifier(window.innerHeight/930);
+    if (window && window?.innerHeight % 930 > 100) {
+      setYModifier(window?.innerHeight/930);
     }
-  }, [window.innerHeight, window.innerWidth]);
+  }, [window?.innerHeight, window?.innerWidth]);
   console.log(xModifier)
   const scaleX = useTransform(
     scrollYProgress,
