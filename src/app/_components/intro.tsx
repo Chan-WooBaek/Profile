@@ -26,7 +26,7 @@ export const Intro = () => {
       delayFunction(3000);
     }
   }, [isInView]);
-
+  const textSize = 'text-[30px]'
   return(
     <Macbook
       textComponent={
@@ -36,18 +36,18 @@ export const Intro = () => {
           <div
             className="flex gap-[2%]"
           >
-            <div className="flex text-[40px] text-white">
+            <div className={`flex ${textSize} text-[#6d7673]`}>
               1
             </div>
-            <TypewriterEffect words={first_sentence}/>
+            <TypewriterEffect words={first_sentence} textSize={textSize}/>
           </div>
           <div
             className="flex gap-[2%]"
           >
-            <motion.div className="flex text-[40px] text-white" ref={scope}>
+            <motion.div className={`flex ${textSize} text-[#6d7673]`} ref={scope}>
               <motion.span className="hidden">2</motion.span>
             </motion.div>
-            <TypewriterEffect words={second_sentence} delay={3000} lastLine={true}/>
+            <TypewriterEffect words={second_sentence} delay={3000} lastLine={true} textSize={textSize}/>
           </div>          
         </div>
       }

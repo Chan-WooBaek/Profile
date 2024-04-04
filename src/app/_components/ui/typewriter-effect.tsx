@@ -127,7 +127,7 @@ export const TypewriterEffect = ({
   return (
     <div
       className={cn(
-        `inline-flex text-base text-[40px] font-bold text-center justify-left w-[70vw]`,
+        `inline-flex text-base ${textSize} font-bold text-center justify-left w-[70vw]`,
         className
       )}
     >
