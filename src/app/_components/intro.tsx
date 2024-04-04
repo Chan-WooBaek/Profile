@@ -27,9 +27,8 @@ export const Intro = () => {
       delayFunction(3000);
     }
   }, [isInView]);
-  const textSize = 'text-[30px]'
+  const textSize = 'text-[1.5rem]'
   return(
-    <div className="absolute flex place-items-start pl-[10vw]">
       <Macbook
         textComponent={
           <>
@@ -57,7 +56,7 @@ export const Intro = () => {
               </div>
             </div>
             <div className="absolute flex bg-gray-600 h-[5%] w-[20%] rounded-t-lg top-[1%] left-[1%]">
-              <div className="flex items-center gap-1 text-[10px] pl-2 pb-[2px] text-white">
+              <div className="flex items-center gap-1 text-[0.5rem] pl-2 pb-[2px] text-white">
                 <FontAwesomeIcon icon={faReact} color="#2c83b2"/>
                 <>ScrollDown.tsx</>
               </div>
@@ -65,7 +64,6 @@ export const Intro = () => {
           </>
         }
       />
-    </div>
   )
 };
 

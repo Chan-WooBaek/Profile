@@ -48,6 +48,7 @@ export const Macbook = ({
   const [middlingPadding, setMiddlingPadding] = useState(0);
 
   useEffect(() => {
+    console.log(window?.innerWidth, window?.innerHeight)
     if (typeof window !== "undefined" && window?.innerWidth % 1920 > 100) {
       setXModifier(window?.innerWidth/1920);
     }
@@ -61,22 +62,22 @@ export const Macbook = ({
 
   const scaleX = useTransform(
     scrollYProgress,
-    [0, 0.3],
-    [2.25 * xModifier, 1.2]
+    [0, 0.4],
+    [1.5, 1.2]
   );
   const scaleY = useTransform(
     scrollYProgress,
-    [0, 0.3],
-    [2.25 * yModifier, 0.6]
+    [0, 0.4],
+    [1.5, 0.6]
   );
-  const translateY = useTransform(scrollYProgress, [0, 0.25], ['-107vh', '0vh']);
-  const translateX = useTransform(scrollYProgress, [0, 0.25], [middlingPadding, 0]);
+  const translateY = useTransform(scrollYProgress, [0, 0.25], ['-45rem', '0rem']);
+  const translateX = useTransform(scrollYProgress, [0, 0.25], ['2rem', '0rem']);
   const rotate = useTransform(scrollYProgress, [0.3, 0.12, 0.1], [-28, -28, 0]);
 
   return (
     <div
       ref={ref}
-      className="min-h-[200vh] flex flex-col items-center py-0 md:py-[110vh] justify-items-center flex-shrink-0 [perspective:800px] transform scale-100 "
+      className="flex flex-col items-start pl-[8vw] pt-[110vh] pb-[10vh] justify-items-center flex-shrink-0 [perspective:800px] transform scale-100 "
     >
       {/* Lid */}
       <Lid
