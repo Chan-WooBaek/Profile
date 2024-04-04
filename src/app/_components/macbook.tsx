@@ -45,6 +45,7 @@ export const Macbook = ({
   });
   const [xModifier, setXModifier] = useState(1);
   const [yModifier, setYModifier] = useState(1);
+  const [middlingPadding, setMiddlingPadding] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window?.innerWidth % 1920 > 100) {
@@ -53,8 +54,11 @@ export const Macbook = ({
     if (typeof window !== "undefined" && window?.innerHeight % 930 > 100) {
       setYModifier(window?.innerHeight/930);
     }
+    if (typeof window !== "undefined" && window?.innerWidth) {
+      setMiddlingPadding((window?.innerWidth / 9));
+    }
   }, []);
-  console.log(xModifier)
+
   const scaleX = useTransform(
     scrollYProgress,
     [0, 0.3],
@@ -65,13 +69,14 @@ export const Macbook = ({
     [0, 0.3],
     [2.25 * yModifier, 0.6]
   );
-  const translate = useTransform(scrollYProgress, [0, 0.2], ['-107vh', '0vh']);
+  const translateY = useTransform(scrollYProgress, [0, 0.25], ['-107vh', '0vh']);
+  const translateX = useTransform(scrollYProgress, [0, 0.25], [middlingPadding, 0]);
   const rotate = useTransform(scrollYProgress, [0.3, 0.12, 0.1], [-28, -28, 0]);
 
   return (
     <div
       ref={ref}
-      className="min-h-[200vh] flex flex-col items-center py-0 md:py-[110vh] justify-items-center flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
+      className="min-h-[200vh] flex flex-col items-center py-0 md:py-[110vh] justify-items-center flex-shrink-0 [perspective:800px] transform scale-100 "
     >
       {/* Lid */}
       <Lid
@@ -79,7 +84,8 @@ export const Macbook = ({
         scaleX={scaleX}
         scaleY={scaleY}
         rotate={rotate}
-        translate={translate}
+        translateY={translateY}
+        translateX={translateX}
         textComponent={textComponent}
       />
       {/* Base area */}
@@ -114,14 +120,15 @@ export const Lid = ({
   scaleX,
   scaleY,
   rotate,
-  translate,
-  src,
+  translateY,
+  translateX,
   textComponent,
 }: {
   scaleX: MotionValue<number>;
   scaleY: MotionValue<number>;
   rotate: MotionValue<number>;
-  translate: MotionValue<any>;
+  translateY: MotionValue<any>;
+  translateX: MotionValue<any>;
   src?: string;
   textComponent?: any;
 }) => {
@@ -148,18 +155,14 @@ export const Lid = ({
           scaleX: scaleX,
           scaleY: scaleY,
           rotateX: rotate,
-          translateY: translate,
+          translateY: translateY,
+          translateX: translateX,
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
         className="absolute h-96 w-[32rem] inset-0 bg-[#010101] rounded-2xl"
       >
-        
-        <div className="absolute inset-0 bg-[#272729] rounded-lg" />
-        <div className="absolute flex bg-gray-600 h-[95%] w-full rounded-b-lg top-[5%]">
-          {textComponent}
-        </div>
-        <div className="absolute flex bg-gray-600 h-[6%] w-[20%] rounded-t-lg top-[1%] left-[1%]"/>
+        {textComponent}
       </motion.div>
     </div>
   );
