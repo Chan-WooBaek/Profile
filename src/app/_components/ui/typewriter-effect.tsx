@@ -10,7 +10,8 @@ export const TypewriterEffect = ({
   cursorClassName,
   delay,
   lastLine,
-  textSize,
+  textClassName,
+  repeat,
 }: {
   words: {
     text: string;
@@ -20,7 +21,8 @@ export const TypewriterEffect = ({
   cursorClassName?: string;
   delay?: number;
   lastLine?: boolean;
-  textSize?: string;
+  textClassName?: string;
+  repeat?: number;
 }) => {
   // split text inside of words into array of characters
   const wordsArray = words.map((word) => {
@@ -32,9 +34,10 @@ export const TypewriterEffect = ({
   const wordLength = words.length
   const [scope, animate] = useAnimate();
   const isInView = useInView(scope);
+
   function timeout(delay: number) {
     return new Promise( res => setTimeout(res, delay) );
-}
+  }
   async function delayFunction(delay: number) {
     await timeout(delay);
     animate(
@@ -47,7 +50,7 @@ export const TypewriterEffect = ({
       },
       {
         duration: 0.2,
-        delay: stagger(0.1),
+        delay: stagger(0.09),
         ease: "easeInOut",
       }
     );
@@ -67,7 +70,7 @@ export const TypewriterEffect = ({
         },
         {
           duration: 0.2,
-          delay: stagger(0.1),
+          delay: stagger(0.09),
           ease: "easeInOut",
         }
       );
@@ -85,7 +88,7 @@ export const TypewriterEffect = ({
                   initial={{}}
                   key={`char-${index}`}
                   className={cn(
-                    `dark:text-white text-white opacity-0 hidden w-0`,
+                    `dark:text-white text-black opacity-0 hidden w-0`,
                     word.className
                   )}
                 >
@@ -95,7 +98,7 @@ export const TypewriterEffect = ({
               {idx != wordLength - 1 && <motion.span
                   initial={{}}
                   className={cn(
-                    `dark:text-white text-white opacity-0 hidden w-0`,
+                    `dark:text-white text-black opacity-0 hidden w-0`,
                     word.className
                   )}
                 >
@@ -113,7 +116,7 @@ export const TypewriterEffect = ({
         }}
         transition={{
           duration: 0.8,
-          repeat: lastLine ? Infinity : 3,
+          repeat: lastLine ? Infinity : repeat,
           repeatType: "reverse",
         }}
         className={cn(
@@ -127,7 +130,7 @@ export const TypewriterEffect = ({
   return (
     <div
       className={cn(
-        `inline-flex text-base ${textSize} font-bold text-center justify-left w-[70vw]`,
+        `inline-flex text-base ${textClassName} text-center justify-left w-[70vw]`,
         className
       )}
     >

@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import { motion, useScroll } from "framer-motion";
 import { InitialNavbar } from "./_components/initial-navbar";
-import { Intro } from "./_components/intro";
+import { Landing } from "./_components/landing";
 
 export default function Index() {
   const pageRef = useRef(null);
@@ -14,7 +14,7 @@ export default function Index() {
   return (
     <motion.div className="overflow-scroll" ref={pageRef}>
       <InitialNavbar scrollYProgress={scrollYProgress} />
-      <Intro/>
+      <Landing/>
     </motion.div>
   );
 }
