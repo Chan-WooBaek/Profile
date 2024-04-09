@@ -48,7 +48,7 @@ export const InitialNavbar: any = ({ scrollYProgress }: { scrollYProgress: Motio
           transition={{ type: "spring", stiffness: 400, damping: 17 }}
         >
           <a
-            href={'https://linkedin.com/in/chan-woo-baek-2b2340202'}
+            href={'https://linkedin.com/in/chan-woo-baek'}
             target="_blank"
           >
             <FontAwesomeIcon
